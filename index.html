@@ -4,6 +4,47 @@
 	<script type="text/javascript" src="./public/scripts/bundle.js"></script>
 </head>
 <body>
-	<h3>hello</h3>
+	<pre><b>State</b></pre>
+	<div id="hook"></div>
+
+	<label for="active">Show active
+		<input class="audience-filter__option"
+		       checked="checked"
+		       id="active"
+					 name="filter"
+					 type="radio"
+					 value="active" />
+	</label>
+	<br>
+	<label for="inactive">Show inactive
+		<input class="audience-filter__option"
+		       id="inactive"
+					 name="filter"
+					 type="radio"
+					 value="inactive" />
+	</label>
+	<br>
+	<label for="all">Show all
+		<input class="audience-filter__option"
+		       id="all"
+					 name="filter"
+					 type="radio"
+					 value="all" />
+	</label>
+	<br><br>
+	<select name="" id="" class="audience-sort__options">
+		<option class="audience-sort__option" value="az">A-Z</option>
+		<option class="audience-sort__option" value="za">Z-A</option>
+	</select>
+
+	<script id="tmpl" type="text/template">
+		<ul>
+		<%_.each(data.studies, function(studyObj){%>
+			<%if(studyObj.displayFlag) {%>
+			<li><%=studyObj.name%></li>
+			<%}%>
+		<%});%>
+		</ul>
+	</script>
 </body>
 </html>
