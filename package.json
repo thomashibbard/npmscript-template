@@ -7,11 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "browserify": "browserify src/app.js --debug -v -t [ babelify --presets [ es2015 react ] ] | exorcist bundle.js.map > public/scripts/bundle.js",
     "watchify": "watchify src/scripts/app.js -o public/scripts/bundle.js -v -t [ babelify --presets [ es2015 ] ]",
-    "sass": "node-sass -wr --output-style expanded --indent-type tab --source-map-embed --include-path ./node_modules sass/ -o public/styles ",
+    "sass": "node-sass -wr --output-style expanded --indent-type tab --source-map-embed --include-path ./node_modules src/sass/ -o public/styles ",
     "autoprefixer": "postcss -u autoprefixer -r public/styles/*",
     "sasslint": "sass-lint 'sass/**/*.scss' --no-exit",
     "start": "concurrently \"nodemon server.js\" \"browser-sync start --proxy localhost:7700 --files sass/**/*.scss public/**/*.html public/scripts/**/*.js\" \"npm run watch\" \"npm run sass\"",
     "build:css": "postcss --use autoprefixer -b 'last 2 versions' < public/styles/main-styles.css | postcss --use cssnano > public/styles/main-styles.min.css",
+    "bs": "browser-sync start --server --files \"public/styles/*.css\" --files \"public/scripts/*.js\"",
     "watch": "npm-watch"
   },
   "keywords": [],
